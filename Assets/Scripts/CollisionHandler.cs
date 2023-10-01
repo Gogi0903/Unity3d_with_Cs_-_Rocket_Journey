@@ -38,16 +38,6 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-    void StartCrashSequence()
-    {   
-        isTransitioning = true;
-        audioSource.Stop();
-        audioSource.PlayOneShot(crash, 0.2f);
-        successParticles.Play();
-        GetComponent<Movement>().enabled = false;
-        Invoke("ReloadLevel", levelLoadDelay);
-    }
-
     void StartSuccessSequence()
     {
         isTransitioning = true;
@@ -56,6 +46,16 @@ public class CollisionHandler : MonoBehaviour
         crashParticles.Play();
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", levelLoadDelay);
+    }
+
+    void StartCrashSequence()
+    {   
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(crash, 0.2f);
+        successParticles.Play();
+        GetComponent<Movement>().enabled = false;
+        Invoke("ReloadLevel", levelLoadDelay);
     }
 
     void ReloadLevel()
