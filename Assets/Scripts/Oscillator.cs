@@ -19,11 +19,11 @@ public class Oscillator : MonoBehaviour
     {
         if (period == Mathf.Epsilon) {return;}
 
-        float cycles = Time.time / period;
+        float cycles = Time.time / period;  // időarányosan növekszik
         
-        const float tau = Mathf.PI * 2;
-        float rawSinWave = Mathf.Sin(cycles * tau);
-        movementFactor = (rawSinWave +1f) / 2;
+        const float tau = Mathf.PI * 2;     // constans érték 2 * 3.14 = 6.28
+        float rawSinWave = Mathf.Sin(cycles * tau); // a sinus hullám amplitudója -1 to 1
+        movementFactor = (rawSinWave +1f) / 2;  // az amplitudó értékét 0-1-re konvertálja
 
         Vector3 offset = movementVector * movementFactor;
         transform.position = startingPosition + offset;
